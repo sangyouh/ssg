@@ -1,7 +1,7 @@
 import { getPost } from "../lib/notions";
 
 export default function Home({ posts }: any) {
-  console.log("PST", posts);
+  //   console.log("PST", posts);
   if (!posts) return <h1>No posts</h1>;
 
   return (
