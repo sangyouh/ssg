@@ -21,10 +21,10 @@ jobs:
       - name: Build and Deploy
         run: |
           npm install
-          npm run build  # Change this command to your build command
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.next/static
+          publish_dir: ./.next
