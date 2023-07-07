@@ -24,7 +24,7 @@ jobs:
           npm run build
 
       - name: Deploy to GitHub Pages
-        uses: sangyouh/ssg@v3
+        uses: JamesIves/github-pages-deploy-action@4.4.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           build_dir: build
