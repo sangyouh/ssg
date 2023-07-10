@@ -51,13 +51,15 @@ jobs:
         run: npm ci
 
       - name: Build
+        # env:
+        #   NOTION_KEY: ${{ secrets.NOTION_KEY }}
+        #   NOTION_DATABASE: ${{ secrets.NOTION_DATABASE }}
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        env:
-          NOTION_KEY: ${{ secrets.NOTION_KEY }}
-          NOTION_DATABASE: ${{ secrets.NOTION_DATABASE }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          NOTION_KEY: ${{ secrets.NOTION_KEY }}
+          NOTION_DATABASE: ${{ secrets.NOTION_DATABASE }}
           publish_dir: ./out
