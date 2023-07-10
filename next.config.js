@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {}
-
 module.exports = {
     env: {
         NOTION_KEY: process.env.NOTION_KEY,
