@@ -34,8 +34,6 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
-        run: |
-          mkdir build
         with:
           # github_token: ${{ secrets.GITHUB_TOKEN }}
           folder: build
