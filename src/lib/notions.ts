@@ -4,19 +4,10 @@ const notion = new Client({
   auth: process.env.NOTION_KEY,
 });
 
-
-// https://www.notion.so/Getting-Started-0b27f9ab4bdf439ea0a18aa2fb7070d1?pvs=4
-
 export const getPost = async () => {
     if(!notion) return;
   const posts = await notion.databases.query({
     database_id: `${process.env.NOTION_DATABASE}`,
-    // filter: {
-    //   property: "Published",
-    //   checkbox: {
-    //     equals: true,
-    //   },
-    // },
     sorts: [
       {
         property: "Date",
@@ -26,8 +17,6 @@ export const getPost = async () => {
   });
 
   const allPosts = posts.results;
-
-//   return allPosts;
 
   return allPosts.map((post) => {
     return getPageMetaData(post);
@@ -49,17 +38,16 @@ const getPageMetaData = (post : any) => {
       tags: getTags(post.properties.Tags.multi_select),
       description: post.properties.Description.rich_text[0].plain_text,
       date: getToday(post.properties.Date.last_edited_time),
-    //   slug: post.properties.Slug.rich_text[0].plain_text,
     };
   };
 
-function getToday (datestring :string) {
+function getToday (dates :string) {
     const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   
     let date = new Date();
   
-    if (datestring) {
-      date = new Date(datestring);
+    if (dates) {
+      date = new Date(dates);
     }
   
     const day = date.getDate();
